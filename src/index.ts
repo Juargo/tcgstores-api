@@ -7,7 +7,7 @@ console.log(process.env.NODE_ENV);
 const httpServer = http.createServer(app);
 
 httpServer.listen(3001, () => {
-  console.log("HTTP Server running on port 80");
+  console.log("HTTP Server running on port 3001");
 });
 // }
 
