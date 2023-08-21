@@ -1,0 +1,26 @@
+version: "3.4"
+
+services:
+  deploy:
+    image: registry.gitlab.com/pokemon-stores/api-stores/main:latest
+    build:
+      context: .
+      dockerfile: Docker/Deploy/Dockerfile
+
+  database-stores-testing:
+    image: mysql:8.0.26
+    command:
+      [
+        "mysqld",
+        "--character-set-server=utf8mb4",
+        "--collation-server=utf8mb4_unicode_ci",
+        "--max_allowed_packet=32505856",
+      ]
+    ports:
+      - 3307:3306
+    environment:
+      TZ: America/Santiago
+      MYSQL_DATABASE: STORES
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
